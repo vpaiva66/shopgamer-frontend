@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthService } from '../services/auth.service';
 
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -26,7 +27,8 @@ export class MyApp {
     this.pages = [
       { title: 'Profile', component: 'ProfilePage' },
       { title: 'Categorias', component: 'CategoriasPage' },
-      { title: 'Logout', component: ''}
+      { title: 'Logout', component: ''},
+      { title: 'Carrinho', component: 'CartPage'},
     ];
 
   }
