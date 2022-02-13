@@ -13,7 +13,7 @@ export class AuthService {
   jwtHelper: JwtHelper = new JwtHelper();
 
   constructor(
-    public http: HttpClient, 
+    public http: HttpClient,
     public storage: StorageService,
     public cartService: CartService) {
   }
@@ -37,7 +37,7 @@ export class AuthService {
               responseType: 'text'
           });
   }
-  
+
     successfulLogin(authorizationValue : string) {
       let tok = authorizationValue.substring(7);
       let user : LocalUser = {

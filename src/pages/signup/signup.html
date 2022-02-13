@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Signup</ion-title>
+    <ion-title>Cadastrar</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -55,7 +55,7 @@
       <ion-input formControlName="complemento" type="text"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label stacked>Bairro</ion-label>
+      <ion-label stacked>Bairro*</ion-label>
       <ion-input formControlName="bairro" type="text"></ion-input>
     </ion-item>
     <ion-item>
@@ -90,4 +90,5 @@
     </ion-item>
     <button ion-button block type="submit" [disabled]="formGroup.invalid">Criar conta</button>
   </form>
+
 </ion-content>
