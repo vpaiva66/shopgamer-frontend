@@ -3,13 +3,13 @@
     <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>ProdutoDetail</ion-title>
+    <ion-title>Produto Detalhado</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-fab top right edge>
-    <button navPush="CartPage" ion-fab mini><ion-icon name="cart"></ion-icon></button>
+    <button class="but" navPush="CartPage" ion-fab mini><ion-icon name="cart"></ion-icon></button>
   </ion-fab>
   <ion-card>
     <img [src]="item?.imageUrl || 'assets/imgs/prod.jpg'"/>
@@ -18,10 +18,10 @@
         {{item?.nome}}
         </ion-card-title>
       <p>
-        {{item?.preco | currency}}
+        {{item?.preco | currency : 'BRL'}}
       </p>
     </ion-card-content>
   </ion-card>
 
-  <button ion-button block outline (click)="addToCart(item)">Adicionar ao carrinho</button>
+  <button class="but1" ion-button block outline (click)="addToCart(item)">Adicionar ao carrinho</button>
 </ion-content>

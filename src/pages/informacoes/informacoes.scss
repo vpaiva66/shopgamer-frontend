@@ -1,0 +1,14 @@
+page-informacoes {
+
+  .menu{
+    color: #960A0A;
+  }
+
+  ion-card-content{
+    @media (min-width: 500px) {
+      max-width: 75% ;
+      max-height: 100% ;
+    }    
+  }
+
+}

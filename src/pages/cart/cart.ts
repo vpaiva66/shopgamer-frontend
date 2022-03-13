@@ -33,7 +33,7 @@ export class CartPage {
       let item = this.items[i];
       this.produtoService.getSmallImageFromBucket(item.produto.id)
         .subscribe(response => {
-          item.produto.imageUrl = `${API_CONFIG.bucketBaseUrl}/prod${item.produto.id}-small.jpg`;
+          item.produto.imageUrl = `${API_CONFIG.bucketBaseUrl}/prod${item.produto.id}.jpg`;
         },
         error => {});
     }
@@ -57,5 +57,9 @@ export class CartPage {
 
   goOn() {
     this.navCtrl.setRoot('CategoriasPage');
+  }
+
+  checkout() {
+    this.navCtrl.push('PickAddressPage');
   }
 }
