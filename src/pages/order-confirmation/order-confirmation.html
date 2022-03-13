@@ -15,7 +15,7 @@
       <ion-card-header>
         Itens do pedido
       </ion-card-header>
-      
+
       <ion-list>
         <ion-item *ngFor="let item of cartItems">
           <ion-thumbnail item-start>
@@ -25,13 +25,13 @@
           <p>{{item.produto.preco | currency : 'BRL'}}</p>
           <p class="nolinebreak">{{item.quantidade}}</p>
           <p item-end>{{item.produto.preco * item.quantidade | currency : 'BRL'}}</p>
-        </ion-item> 
+        </ion-item>
 
         <ion-item>
           <h2>Total</h2>
           <h2 item-end>{{total() | currency : 'BRL'}}</h2>
         </ion-item>
-      </ion-list> 
+      </ion-list>
     </ion-card>
 
     <ion-card>
@@ -48,7 +48,7 @@
       <ion-card-header>
         Endereço de entrega
       </ion-card-header>
-    
+
       <ion-item>
         <h2>{{endereco?.logradouro}}, {{endereco?.numero}}</h2>
         <p>{{endereco?.complemento}} {{endereco?.bairro}} CEP {{endereco?.cep}}</p>
@@ -60,7 +60,7 @@
       <ion-card-header>
         Pagamento
       </ion-card-header>
-    
+
       <ion-item *ngIf="pedido.pagamento['@type']=='pagamentoComCartao'">
         <h3>Pagamento com cartão</h3>
         <p>Parcelas: {{pedido.pagamento.numeroDeParcelas}}</p>

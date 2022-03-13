@@ -2,7 +2,7 @@
   <ion-navbar>
     <button class="menu" ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
-    </button>    
+    </button>
     <ion-title>Carrinho</ion-title>
   </ion-navbar>
 </ion-header>
@@ -19,7 +19,7 @@
       <p class="nolinebreak">{{item.quantidade}}</p>
       <ion-icon class="icone" name="add-circle"  (click)="increaseQuantity(item.produto)"></ion-icon>
       <ion-icon class="icone" name="trash" item-end  (click)="removeItem(item.produto)"></ion-icon>
-    </ion-item>    
+    </ion-item>
   <ion-item *ngIf="total() > 0">
     <h2>Total</h2>
     <h2 item-end>{{total() | currency : 'BRL'}}</h2>
@@ -27,7 +27,7 @@
   <ion-item *ngIf="total() <= 0">
     <img src="assets/imgs/carrinho-vazio.jpg" alt="">
   </ion-item>
-</ion-list> 
+</ion-list>
 <button class="but" ion-button block outline (click)="goOn()">Continuar comprando</button>
 <button class="but1" *ngIf="total() > 0" ion-button outline  block (click)="checkout()">Finalizar pedido</button>
 </ion-content>

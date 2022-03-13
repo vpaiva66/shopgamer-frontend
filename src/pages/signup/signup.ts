@@ -20,8 +20,8 @@ export class SignupPage {
   cidades: CidadeDTO[];
 
   constructor(
-    
-    public navCtrl: NavController, 
+
+    public navCtrl: NavController,
     public formBuilder: FormBuilder,
     public cidadeService: CidadeService,
     public estadoService: EstadoService,
@@ -41,7 +41,7 @@ export class SignupPage {
       cep : ['', [Validators.required]],
       telefone1 : ['', [Validators.required]],
       estadoId : [null, [Validators.required]],
-      cidadeId : [null, [Validators.required]]      
+      cidadeId : [null, [Validators.required]]
     });
   }
 
