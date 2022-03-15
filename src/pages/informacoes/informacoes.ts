@@ -1,4 +1,4 @@
-import { Component, ViewChild  } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import chartJs from 'chart.js';
 import { InformacoesService } from '../../services/domain/informacoes.service';
@@ -11,7 +11,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   selector: 'page-informacoes',
   templateUrl: 'informacoes.html',
 })
-export class InformacoesPage {
+export class InformacoesPage implements OnInit{
 
   @ViewChild('barCanvas') barCanvas;
 
@@ -28,38 +28,10 @@ export class InformacoesPage {
     public informacoesService: InformacoesService) {   
   }
 
-  getCategorias() {
-    this.informacoesService.findAllCategorias().subscribe(data => {
-      this.total = data;
-      console.log(this.total)
-    }, error => {})
-  }
+  ngOnInit(): void {
 
-  getClientes() {
-    this.informacoesService.findAllClientes().subscribe(data => {
-      this.total2 = data;
-      console.log(this.total2)
-    }, error => {})
-  }
+    this.barChart = this.getBarChart();
 
-  getProdutos() {
-    this.informacoesService.findAllProdutos().subscribe(data => {
-      this.total3 = data;
-      console.log(this.total3)
-    }, error => {})
-  }
-
-  getPedidos() {
-    this.informacoesService.findAllPedidos().subscribe(data => {
-      this.total4 = data;
-      console.log(this.total4)
-    }, error => {})
-  }
-
-  ngAfterViewInit(){
-    setTimeout(() => {
-      this.barChart = this.getBarChart();
-    }, 150)
   }
 
   getChart(context, chartType, data, options?) {
@@ -71,21 +43,32 @@ export class InformacoesPage {
   }
 
 
-  getBarChart(){
-    const data = {
-      labels: ['Clientes', 'Pedidos', 'Produtos', 'Categorias'],
-      datasets: [{
-        label: 'Registrado no sistema',
-        data: [80,600,25,200],
-        backgroundColor: [
-          'rgb(255, 0, 0)',
-          'rgb(20, 0, 255)',
-          'rgb(255, 230, 0)',
-          'rgb(0, 255, 10)'
-        ],
-        borderWidth: 1
-      }]
-    };
+  async getBarChart(){
+
+    const data = await Promise.all([
+      this.informacoesService.findAllClientes(),
+      this.informacoesService.findAllPedidos(),
+      this.informacoesService.findAllProdutos(),
+      this.informacoesService.findAllCategorias(),
+    ])
+      .then( resp => {
+
+        return {
+          labels: ['Clientes', 'Pedidos', 'Produtos', 'Categorias'],
+          datasets: [{
+            label: 'Registrado no sistema',
+            data: [resp[0],resp[1],resp[2],resp[3]],
+            backgroundColor: [
+              'rgb(255, 0, 0)',
+              'rgb(20, 0, 255)',
+              'rgb(255, 230, 0)',
+              'rgb(0, 255, 10)'
+            ],
+            borderWidth: 1,
+          }]
+        }
+      })
+      .catch(console.log) 
 
     const options = {
       scales: {
@@ -96,7 +79,7 @@ export class InformacoesPage {
         }]
       }
     }
-    console.log(this.total4)
+    
     return this.getChart(this.barCanvas.nativeElement, 'bar', data, options);
   }
 
