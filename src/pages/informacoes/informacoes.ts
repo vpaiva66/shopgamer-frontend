@@ -16,11 +16,6 @@ export class InformacoesPage implements OnInit{
   @ViewChild('barCanvas') barCanvas;
 
   barChart: any;
-  
-  total: informacoesDto
-  total2: informacoesDto
-  total3: informacoesDto
-  total4: informacoesDto
 
   constructor(
     public navCtrl: NavController, 
@@ -41,7 +36,6 @@ export class InformacoesPage implements OnInit{
       type: chartType
     })
   }
-
 
   async getBarChart(){
 
@@ -79,7 +73,7 @@ export class InformacoesPage implements OnInit{
         }]
       }
     }
-    
+
     return this.getChart(this.barCanvas.nativeElement, 'bar', data, options);
   }
 
