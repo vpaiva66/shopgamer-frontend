@@ -29,6 +29,14 @@ page-produto-detail {
                 
         }
     }
+    
+    .infoProd{
+        display: flex;
+        flex-direction: column;
+    }
 
+    .imgProd, .textProd{
+        align-self: center;
+    }
     
 }
